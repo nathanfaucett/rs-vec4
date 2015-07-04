@@ -91,6 +91,6 @@ pub fn scale_mat4<T: Num>(out: &mut [T; 4], m: [T; 16]) -> &mut [T; 4] {
     out[0] = vec3::length_values(m[0], m[4], m[8]);
     out[1] = vec3::length_values(m[1], m[5], m[9]);
     out[2] = vec3::length_values(m[2], m[6], m[10]);
-    out[3] = vec3::length_values(m[3], m[7], m[11]);
+    out[3] = T::one();
     out
 }
