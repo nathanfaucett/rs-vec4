@@ -15,6 +15,8 @@ fn test_create() {
 #[inline(always)]
 pub fn zero<T: Num>() -> [T; 4] {create(T::zero(), T::zero(), T::zero(), T::zero())}
 #[inline(always)]
+pub fn identity<T: Num>() -> [T; 4] {create(T::zero(), T::zero(), T::zero(), T::one())}
+#[inline(always)]
 pub fn up<T: Num>() -> [T; 4] {create(T::zero(), T::zero(), T::one(), T::one())}
 #[inline(always)]
 pub fn down<T: Num>() -> [T; 4] {create(T::zero(), T::zero(), -T::one(), T::one())}
