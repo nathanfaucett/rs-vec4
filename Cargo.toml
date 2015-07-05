@@ -3,6 +3,13 @@ name = "vec4"
 version = "0.1.0"
 authors = ["nathanfaucett <nathanfaucett@gmail.com>"]
 
+keywords = ["vec4", "vector", "4"]
+description = "rust vector 4 functions"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/nathanfaucett/rs-vec4.git"
+homepage = "https://github.com/nathanfaucett/rs-vec4"
+
 [dependencies.num]
 git = "https://github.com/nathanfaucett/rs-num.git"
 
