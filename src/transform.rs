@@ -2,7 +2,6 @@ extern crate vec2;
 extern crate vec3;
 
 use num::Num;
-use length::length_values;
 
 
 #[inline(always)]
