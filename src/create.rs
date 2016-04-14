@@ -2,10 +2,12 @@ use num::Num;
 
 
 #[inline(always)]
-pub fn create<T: Num>(x: T, y: T, z: T, w: T) -> [T; 4] {[x, y, z, w]}
+pub fn new<T: Num>(x: T, y: T, z: T, w: T) -> [T; 4] {[x, y, z, w]}
+#[inline(always)]
+pub fn create<T: Num>(x: T, y: T, z: T, w: T) -> [T; 4] {new(x, y, z, w)}
 #[test]
-fn test_create() {
-    let v = create(1, 2, 3, 4);
+fn test_new() {
+    let v = new(1, 2, 3, 4);
     assert!(v[0] == 1);
     assert!(v[1] == 2);
     assert!(v[2] == 3);
@@ -13,7 +15,7 @@ fn test_create() {
 }
 
 #[inline(always)]
-pub fn clone<T: Num>(v: [T; 4]) -> [T; 4] {create(v[0], v[1], v[2], v[3])}
+pub fn clone<T: Num>(v: [T; 4]) -> [T; 4] {new(v[0], v[1], v[2], v[3])}
 
 #[inline(always)]
 pub fn copy<T: Num>(out: &mut [T; 4], a: [T; 4]) -> &mut [T; 4] {
