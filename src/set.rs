@@ -2,7 +2,7 @@ use num::Num;
 
 
 #[inline(always)]
-pub fn set<T: Num>(out: &mut [T; 4], x: T, y: T, z: T, w: T) -> &mut [T; 4] {
+pub fn set<'a, T: Num>(out: &'a mut [T; 4], x: T, y: T, z: T, w: T) -> &'a mut [T; 4] {
     out[0] = x;
     out[1] = y;
     out[2] = z;
@@ -17,18 +17,18 @@ fn test_set() {
 }
 
 #[inline(always)]
-pub fn zero<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::zero()) }
+pub fn zero<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::zero()) }
 #[inline(always)]
-pub fn identity<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::one()) }
+pub fn identity<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::one()) }
 #[inline(always)]
-pub fn up<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::zero(), T::zero(), T::one(), T::one()) }
+pub fn up<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::one(), T::one()) }
 #[inline(always)]
-pub fn down<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::zero(), T::zero(), -T::one(), T::one()) }
+pub fn down<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), -T::one(), T::one()) }
 #[inline(always)]
-pub fn forward<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::zero(), T::one(), T::one(), T::one()) }
+pub fn forward<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::one(), T::one(), T::one()) }
 #[inline(always)]
-pub fn back<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::zero(), -T::one(), T::zero(), T::one()) }
+pub fn back<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), -T::one(), T::zero(), T::one()) }
 #[inline(always)]
-pub fn left<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, -T::one(), T::zero(), T::one(), T::one()) }
+pub fn left<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, -T::one(), T::zero(), T::one(), T::one()) }
 #[inline(always)]
-pub fn right<T: Num>(out: &mut [T; 4]) -> &mut [T; 4] { set(out, T::one(), T::zero(), T::one(), T::one()) }
+pub fn right<'a, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::one(), T::zero(), T::one(), T::one()) }

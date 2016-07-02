@@ -1,6 +1,8 @@
 #![no_std]
 
 
+extern crate vec2;
+extern crate vec3;
 extern crate num;
 
 
