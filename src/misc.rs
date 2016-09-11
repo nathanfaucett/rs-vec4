@@ -20,11 +20,12 @@ fn test_inverse() {
 }
 
 #[inline(always)]
-pub fn lerp<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], b: &'b [T; 4], t: T) -> &'a mut [T; 4] {
-    out[0] = a[0] + (b[0] - a[0]) * t;
-    out[1] = a[1] + (b[1] - a[1]) * t;
-    out[2] = a[2] + (b[2] - a[2]) * t;
-    out[3] = a[3] + (b[3] - a[3]) * t;
+pub fn lerp<'a, 'b, T: Num, N: Num>(out: &'a mut [T; 4], a: &'b [T; 4], b: &'b [T; 4], t: N) -> &'a mut [T; 4] {
+    let t_f64 = t.to_f64();
+    out[0] = T::from_f64((a[0] + (b[0] - a[0])).to_f64() * t_f64);
+    out[1] = T::from_f64((a[1] + (b[1] - a[1])).to_f64() * t_f64);
+    out[2] = T::from_f64((a[2] + (b[2] - a[2])).to_f64() * t_f64);
+    out[3] = T::from_f64((a[3] + (b[3] - a[3])).to_f64() * t_f64);
     out
 }
 #[test]
