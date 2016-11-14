@@ -31,3 +31,17 @@ fn test_copy() {
     copy(&mut v, &[1, 2, 3, 4]);
     assert!(v == [1, 2, 3, 4]);
 }
+
+#[inline(always)]
+pub fn from_vec2<'a, 'b, T: Num>(out: &'a mut [T; 4], v: &'b [T; 2]) -> &'a mut [T; 4] {
+    out[0] = v[0];
+    out[1] = v[1];
+    out
+}
+#[inline(always)]
+pub fn from_vec3<'a, 'b, T: Num>(out: &'a mut [T; 4], v: &'b [T; 3]) -> &'a mut [T; 4] {
+    out[0] = v[0];
+    out[1] = v[1];
+    out[2] = v[2];
+    out
+}
