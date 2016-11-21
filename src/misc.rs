@@ -86,18 +86,18 @@ fn test_clamp() {
 
 #[inline(always)]
 pub fn eq<'a, T: Unsigned>(a: &'a [T; 4], b: &'a [T; 4]) -> bool {
-    !nq(a, b)
+    !ne(a, b)
 }
 
 #[inline(always)]
-pub fn nq<'a, T: Unsigned>(a: &'a [T; 4], b: &'a [T; 4]) -> bool {
+pub fn ne<'a, T: Unsigned>(a: &'a [T; 4], b: &'a [T; 4]) -> bool {
     !a[0].approx_eq(b[0]) ||
     !a[1].approx_eq(b[1]) ||
     !a[2].approx_eq(b[2]) ||
     !a[3].approx_eq(b[3])
 }
 #[test]
-fn test_nq() {
-    assert_eq!(nq(&[1f32, 1f32, 1f32, 1f32], &[1f32, 1f32, 1f32, 1f32]), false);
-    assert_eq!(nq(&[0f32, 0f32, 0f32, 0f32], &[1f32, 1f32, 1f32, 1f32]), true);
+fn test_ne() {
+    assert_eq!(ne(&[1f32, 1f32, 1f32, 1f32], &[1f32, 1f32, 1f32, 1f32]), false);
+    assert_eq!(ne(&[0f32, 0f32, 0f32, 0f32], &[1f32, 1f32, 1f32, 1f32]), true);
 }
