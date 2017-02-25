@@ -3,7 +3,7 @@ use vec3;
 use num::Num;
 
 
-#[inline(always)]
+#[inline]
 pub fn transform_mat3<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b [T; 9]) -> &'a mut [T; 4] {
     out[0] = a[0] * m[0] + a[1] * m[3] + a[2] * m[6];
     out[1] = a[0] * m[1] + a[1] * m[4] + a[2] * m[7];
@@ -11,7 +11,7 @@ pub fn transform_mat3<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn transform_mat4<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b [T; 16]) -> &'a mut [T; 4] {
     out[0] = a[0] * m[0] + a[1] * m[4] + a[2] * m[8] + a[3] * m[12];
     out[1] = a[0] * m[1] + a[1] * m[5] + a[2] * m[9] + a[3] * m[13];
@@ -20,7 +20,7 @@ pub fn transform_mat4<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn transform_mat4_rotation<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b [T; 16]) -> &'a mut [T; 4] {
     out[0] = a[0] * m[0] + a[1] * m[4] + a[2] * m[8];
     out[1] = a[0] * m[1] + a[1] * m[5] + a[2] * m[9];
@@ -29,7 +29,7 @@ pub fn transform_mat4_rotation<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn transform_projection<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b [T; 16]) -> &'a mut [T; 4] {
     let mut d = a[0] * m[3] + a[1] * m[7] + a[2] * m[11] + a[3] * m[15];
     d = if d != T::zero() {T::one() / d} else {d};
@@ -41,7 +41,7 @@ pub fn transform_projection<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], 
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn transform_projection_no_position<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], m: &'b [T; 16]) -> &'a mut [T; 4] {
     let mut d = a[0] * m[3] + a[1] * m[7] + a[2] * m[11] + a[3] * m[15];
     d = if d != T::zero() {T::one() / d} else {d};
@@ -53,14 +53,14 @@ pub fn transform_projection_no_position<'a, 'b, T: Num>(out: &'a mut [T; 4], a: 
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn position_mat32<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 6]) -> &'a mut [T; 4] {
     out[0] = m[4];
     out[1] = m[5];
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn position_mat4<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 16]) -> &'a mut [T; 4] {
     out[0] = m[12];
     out[1] = m[13];
@@ -69,7 +69,7 @@ pub fn position_mat4<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 16]) -> &'a
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn scale_mat2<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 4]) -> &'a mut [T; 4] {
     out[0] = vec2::length_values(m[0], m[2]);
     out[1] = vec2::length_values(m[1], m[3]);
@@ -78,7 +78,7 @@ pub fn scale_mat2<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 4]) -> &'a mut
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn scale_mat32<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 6]) -> &'a mut [T; 4] {
     out[0] = vec3::length_values(m[0], m[2], T::zero());
     out[1] = vec3::length_values(m[1], m[3], T::zero());
@@ -87,7 +87,7 @@ pub fn scale_mat32<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 6]) -> &'a mu
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn scale_mat3<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 9]) -> &'a mut [T; 4] {
     out[0] = vec3::length_values(m[0], m[3], m[6]);
     out[1] = vec3::length_values(m[1], m[4], m[7]);
@@ -96,7 +96,7 @@ pub fn scale_mat3<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 9]) -> &'a mut
     out
 }
 
-#[inline(always)]
+#[inline]
 pub fn scale_mat4<'a, 'b, T: Num>(out: &'a mut [T; 4], m: &'b [T; 16]) -> &'a mut [T; 4] {
     out[0] = vec3::length_values(m[0], m[4], m[8]);
     out[1] = vec3::length_values(m[1], m[5], m[9]);
