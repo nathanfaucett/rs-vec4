@@ -1,8 +1,9 @@
-use num::{Signed, Unsigned};
+use num::Num;
+use signed::Signed;
 
 
 #[inline(always)]
-pub fn set<'a, 'b, T: Unsigned>(out: &'a mut [T; 4], x: T, y: T, z: T, w: T) -> &'a mut [T; 4] {
+pub fn set<'a, 'b, T: Num>(out: &'a mut [T; 4], x: T, y: T, z: T, w: T) -> &'a mut [T; 4] {
     out[0] = x;
     out[1] = y;
     out[2] = z;
@@ -17,18 +18,18 @@ fn test_set() {
 }
 
 #[inline(always)]
-pub fn zero<'a, 'b, T: Unsigned>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::zero()) }
+pub fn zero<'a, 'b, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::zero()) }
 #[inline(always)]
-pub fn identity<'a, 'b, T: Unsigned>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::one()) }
+pub fn identity<'a, 'b, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::zero(), T::one()) }
 #[inline(always)]
-pub fn up<'a, 'b, T: Unsigned>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::one(), T::one()) }
+pub fn up<'a, 'b, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), T::one(), T::one()) }
 #[inline(always)]
 pub fn down<'a, 'b, T: Signed>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::zero(), -T::one(), T::one()) }
 #[inline(always)]
-pub fn forward<'a, 'b, T: Unsigned>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::one(), T::one(), T::one()) }
+pub fn forward<'a, 'b, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), T::one(), T::one(), T::one()) }
 #[inline(always)]
 pub fn back<'a, 'b, T: Signed>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::zero(), -T::one(), T::zero(), T::one()) }
 #[inline(always)]
-pub fn right<'a, 'b, T: Unsigned>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::one(), T::zero(), T::one(), T::one()) }
+pub fn right<'a, 'b, T: Num>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, T::one(), T::zero(), T::one(), T::one()) }
 #[inline(always)]
 pub fn left<'a, 'b, T: Signed>(out: &'a mut [T; 4]) -> &'a mut [T; 4] { set(out, -T::one(), T::zero(), T::one(), T::one()) }
