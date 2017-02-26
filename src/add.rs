@@ -2,7 +2,7 @@ use num::Num;
 
 
 #[inline]
-pub fn add<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], b: &'b [T; 4]) ->  &'a mut [T; 4] {
+pub fn add<'a, 'b, T: Copy + Num>(out: &'a mut [T; 4], a: &'b [T; 4], b: &'b [T; 4]) ->  &'a mut [T; 4] {
     out[0] = a[0] + b[0];
     out[1] = a[1] + b[1];
     out[2] = a[2] + b[2];
@@ -20,7 +20,7 @@ fn test_add() {
 }
 
 #[inline]
-pub fn sadd<'a, 'b, T: Num>(out: &'a mut [T; 4], a: &'b [T; 4], s: T) ->  &'a mut [T; 4] {
+pub fn sadd<'a, 'b, T: Copy + Num>(out: &'a mut [T; 4], a: &'b [T; 4], s: T) ->  &'a mut [T; 4] {
     out[0] = a[0] + s;
     out[1] = a[1] + s;
     out[2] = a[2] + s;
